@@ -1,0 +1,9 @@
+sudo cp index.html stats.php /var/www/html/
+sudo cp nas-update-check.py /usr/local/bin/
+sudo chmod +x /usr/local/bin/nas-update-check.py
+
+# primo controllo (su un Pi 2 può richiedere un po')
+sudo /usr/local/bin/nas-update-check.py
+
+# controllo automatico ogni giorno alle 10:30
+echo '30 10 * * * root /usr/local/bin/nas-update-check.py' | sudo tee /etc/cron.d/nas-update-check
